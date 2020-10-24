@@ -1,7 +1,7 @@
 #!/bin/bash
 print_power() {
-    status="$(cat /sys/class/power_supply/AC/online)"
-    battery="$(cat /sys/class/power_supply/BAT0/capacity)"
+    status="$(cat /sys/class/power_supply/ACAD/online)"
+    battery="$(cat /sys/class/power_supply/BAT1/capacity)"
     if [ "${status}" == 1 ]; then
         echo -ne "CHR ${battery}%";
     else
@@ -31,7 +31,7 @@ print_time() {
 	echo -ne "${time}";
 }
 print_connection() {
-	if [[ "$(cat /sys/class/net/enp0s25/operstate)" == "up" || "$(cat /sys/class/net/wlp2s0/operstate)" == "up" ]]; then echo -ne "ONLINE"; else echo "OFFLINE"; fi
+	if [[ "$(nmcli | grep " connected" | wc -l)" -gt 0 ]]; then echo -ne "ONLINE"; else echo "OFFLINE"; fi
 }
 while true; do
 	xsetroot -name "$(print_cpuram) | $(print_connection) | $(print_power) | $(print_volume) | $(print_date) $(print_time)"
