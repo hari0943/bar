@@ -34,6 +34,6 @@ print_connection() {
 	if [[ "$(nmcli | grep " connected" | wc -l)" -gt 0 ]]; then echo -ne "ONLINE"; else echo "OFFLINE"; fi
 }
 while true; do
-	xsetroot -name "$(print_cpuram) | $(print_connection) | $(print_power) | $(print_volume) | $(print_date) $(print_time)"
-	sleep 1;
+	xsetroot -name "$(print_cpuram) | $(print_power) | $(print_volume) | $(print_date) $(print_time)"
+	sleep 5;
 done 
