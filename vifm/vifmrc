@@ -1,0 +1,47 @@
+fileviewer *.pdf
+    \ vifmimg pdf %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+fileviewer *.djvu
+    \ vifmimg djvu %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+fileviewer *.epub
+    \ vifmimg epub %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+fileviewer <video/*>
+    \ vifmimg video %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+fileviewer <image/*>
+    \ vifmimg draw %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+fileviewer <audio/*>
+    \ vifmimg audio %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+
+fileviewer <font/*>
+    \ vifmimg font %px %py %pw %ph %c
+    \ %pc
+    \ vifmimg clear
+source /usr/share/vifm-devicons/favicons.vifm
+filetype <text/*> nvim
+filetype <image/*> sxiv
+filetype <audio/*> mpv
+filetype *.pdf zathura
+filetype <video/*> mpv
+fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
+fileviewer *.tgz,*.tar.gz tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+fileviewer *.tar.txz,*.txz xz --list %c
+fileviewer *.tar tar -tf %c
+fileviewer *.rar unrar v %c
+fileviewer *.7z 7z l %c

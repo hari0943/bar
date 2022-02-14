@@ -1,10 +1,10 @@
 #!/bin/sh
-res=$(dmenu -p "Power Menu:"< /home/arch/dots/bar/options)
+res=$(dmenu -p "Power Menu:"< "$HOME"/dots/bar/options)
 if [[ $res = "Lock" ]]; then
-    slock
+    i3lock-fancy-rapid 10 10
 fi
 if [[ $res = "Logout" ]]; then
-    killall dwm
+    killall i3
 fi
 if [[ $res = "Suspend" ]]; then
     systemctl suspend
