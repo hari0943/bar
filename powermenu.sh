@@ -1,18 +1,18 @@
-#!/bin/sh
-res=$(dmenu -p "Power Menu:"< "$HOME"/dots/bar/options)
+#!/bin/bash
+res=$(dmenu -p "Power Menu:"< /home/void/dots/bar/options)
 if [[ $res = "Lock" ]]; then
-    i3lock-fancy-rapid 10 10
+    slock
 fi
 if [[ $res = "Logout" ]]; then
-    killall i3
+    xdotool key super+shift+'c'
 fi
 if [[ $res = "Suspend" ]]; then
-    systemctl suspend
+    suspend
 fi
 if [[ $res = "Restart" ]]; then
-    systemctl reboot
+    reboot
 fi
 if [[ $res = "Shutdown" ]]; then
-    systemctl poweroff
+    poweroff
 fi
 exit 0
